@@ -7,6 +7,7 @@ import LinearGradient from 'react-native-linear-gradient';
 export const HomeScreen = () => {
   const [data, setData] = React.useState<any>(null);
   const [usdPrice, setUsdPrice] = React.useState<number>(0);
+  console.log("🚀 ~ file: HomeScreen.tsx:10 ~ HomeScreen ~ usdPrice:", usdPrice)
   const [arsTransform, setArsTransform] = React.useState<number>(0);
   const [arsTransformed, setArsTransformed] = React.useState<String>('');
   const [usdTransform, setUsdTransform] = React.useState<number>(0);
