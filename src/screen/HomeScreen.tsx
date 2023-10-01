@@ -6,8 +6,12 @@ import LinearGradient from 'react-native-linear-gradient';
 
 export const HomeScreen = () => {
   const [data, setData] = React.useState<any>(null);
+  console.log('🚀 ~ file: HomeScreen.tsx:9 ~ HomeScreen ~ data:', data);
   const [usdPrice, setUsdPrice] = React.useState<number>(0);
-  console.log("🚀 ~ file: HomeScreen.tsx:10 ~ HomeScreen ~ usdPrice:", usdPrice)
+  console.log(
+    '🚀 ~ file: HomeScreen.tsx:10 ~ HomeScreen ~ usdPrice:',
+    usdPrice,
+  );
   const [arsTransform, setArsTransform] = React.useState<number>(0);
   const [arsTransformed, setArsTransformed] = React.useState<String>('');
   const [usdTransform, setUsdTransform] = React.useState<number>(0);
@@ -16,40 +20,16 @@ export const HomeScreen = () => {
   React.useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://api.estadisticasbcra.com/usd', {
-          headers: {
-            Authorization: 'Bearer ' + AUTH_TOKEN,
-          },
-        });
+        const response = await fetch('https://dolarapi.com/v1/dolares/blue');
         const json = await response.json();
         setData(json);
       } catch (error) {
         console.error(error);
       }
     };
+
     fetchData();
   }, []);
-
-  React.useEffect(() => {
-    // multiplicar por el valor de la ultima cotizacion por el valor que se ingresa
-    if (data && arsTransform) {
-      const result = data[data.length - 1].v * arsTransform;
-      setArsTransformed(result.toString());
-    }
-  }, [data, arsTransform]);
-
-  React.useEffect(() => {
-    if (data && usdTransform) {
-      const result = data[data.length - 1].v / usdTransform;
-      setUsdTransformed(result.toString());
-    }
-  }, [data, usdTransform]);
-
-  React.useEffect(() => {
-    if (data) {
-      setUsdPrice(data[data.length - 1].v);
-    }
-  }, [data]);
 
   return (
     <View style={styles.container}>
@@ -66,7 +46,7 @@ export const HomeScreen = () => {
         }}>
         <View style={styles.headerContainer}>
           <Text style={{color: 'white', fontSize: 40, fontWeight: '700'}}>
-            USD$1 = {data && data[data.length - 1].v}
+            USD$1 = {data?.venta}
           </Text>
         </View>
         <View style={styles.bodyContainer}>
