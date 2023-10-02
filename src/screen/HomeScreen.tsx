@@ -166,7 +166,7 @@ export const HomeScreen = () => {
         <ScrollView
           style={styles.budgetContainer}
           horizontal={true}
-          // hacer que se haga carrousel infinito
+          // hacer que se haga carrousel infins
 
           pagingEnabled={true}>
           <View style={styles.budget}>
