@@ -166,8 +166,6 @@ export const HomeScreen = () => {
         <ScrollView
           style={styles.budgetContainer}
           horizontal={true}
-          // hacer que se haga carrousel infins
-
           pagingEnabled={true}>
           <View style={styles.budget}>
             <Text style={styles.crrouselSubtitle}>Compra USD Oficial </Text>
