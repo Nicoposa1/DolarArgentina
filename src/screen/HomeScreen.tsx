@@ -54,7 +54,6 @@ export const HomeScreen = () => {
         const json = await response.json();
         setData(json);
       } catch (error) {
-        console.error(error);
       }
     };
     fetchData();
