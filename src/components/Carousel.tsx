@@ -1,35 +1,22 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {Dimensions, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {CurrencyData} from '../interfaces/Home';
-import Carousel from 'react-native-snap-carousel';
+import CarouselItem from './CarouselItem';
+import Carousel from 'react-native-reanimated-carousel';
 
-export const CarouselComponent = ({
-  data,
-  renderItem,
-}: {
-  data: any;
-  renderItem: ({item}: {item: CurrencyData}) => JSX.Element;
-}) => {
+export const CarouselComponent = ({data}: {data: any}) => {
+  const width = Dimensions.get('window').width;
   return (
-    <View
-      style={{
-        marginTop: 20,
-        height: 200,
-        width: '100%',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}>
+    <View style={{flex: 1}}>
       <Carousel
-        data={data}
-        renderItem={renderItem}
-        sliderWidth={300}
-        itemWidth={100}
         loop
-        autoplay
-        autoplayInterval={3000}
+        width={300}
+        height={width / 2}
+        autoPlay={true}
+        data={data}
+        scrollAnimationDuration={1000}
+        onSnapToItem={index => console.log('current index:', index)}
+        renderItem={({index}) => <CarouselItem item={data[index]} />}
       />
     </View>
   );
 };
-
-const styles = StyleSheet.create({});

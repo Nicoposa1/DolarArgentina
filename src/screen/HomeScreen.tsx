@@ -53,26 +53,10 @@ export const HomeScreen = () => {
         const response = await fetch('https://dolarapi.com/v1/dolares/blue');
         const json = await response.json();
         setData(json);
-      } catch (error) {
-      }
+      } catch (error) {}
     };
     fetchData();
   }, []);
-
-  const renderItem = ({item}: {item: CurrencyData}) => (
-    <View style={styles.item}>
-      <Text style={{
-        fontSize: 10,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        color: '#0072ff',
-      }} >{item.nombre}</Text>
-      <Text style={[styles.itemText, {color: '#0072ff', marginTop: 10}]}>
-        {item?.compra}
-      </Text>
-      <Text style={[styles.itemText, {color: '#0072ff'}]}>{item.venta}</Text>
-    </View>
-  );
 
   return (
     <View style={styles.container}>
@@ -100,10 +84,15 @@ export const HomeScreen = () => {
           data={data}
           isDolar={false}
         />
-        <CarouselComponent
-          data={allPrices.map(item => item)}
-          renderItem={renderItem}
-        />
+        <View
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            
+          }}
+        >
+          <CarouselComponent data={allPrices.map(item => item)} />
+        </View>
       </LinearGradient>
     </View>
   );
