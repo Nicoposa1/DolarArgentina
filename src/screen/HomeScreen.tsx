@@ -25,17 +25,9 @@ export const HomeScreen = () => {
     nombre: '',
     venta: 0,
   });
-  console.log('🚀 ~ file: HomeScreen.tsx:9 ~ HomeScreen ~ data:', data);
-  const [usdPrice, setUsdPrice] = React.useState<number>(0);
   const [allPrices, setAllPrices] = React.useState<CurrencyData[]>([]);
-  console.log(
-    '🚀 ~ file: HomeScreen.tsx:26 ~ HomeScreen ~ allPrices:',
-    allPrices,
-  );
   const [arsTransform, setArsTransform] = React.useState<number>(0);
-  const [arsTransformed, setArsTransformed] = React.useState<String>('');
   const [usdTransform, setUsdTransform] = React.useState<any>('');
-  const [usdTransformed, setUsdTransformed] = React.useState<String>('');
 
   React.useEffect(() => {
     const fetchAllData = async () => {
@@ -88,9 +80,7 @@ export const HomeScreen = () => {
           style={{
             justifyContent: 'center',
             alignItems: 'center',
-            
-          }}
-        >
+          }}>
           <CarouselComponent data={allPrices.map(item => item)} />
         </View>
       </LinearGradient>

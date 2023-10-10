@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
+    fontFamily: 'Montserrat-Bold',
   },
 });
 

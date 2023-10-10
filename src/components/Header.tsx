@@ -5,7 +5,13 @@ import {CurrencyData} from '../interfaces/Home';
 export const Header = ({data}: {data: CurrencyData}) => {
   return (
     <View style={styles.headerContainer}>
-      <Text style={{color: 'white', fontSize: 40, fontWeight: '700'}}>
+      <Text
+        style={{
+          color: 'white',
+          fontSize: 40,
+          fontWeight: '700',
+          fontFamily: 'Montserrat-Bold',
+        }}>
         USD$1 = {data?.venta}
       </Text>
     </View>

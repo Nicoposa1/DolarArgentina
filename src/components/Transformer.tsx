@@ -27,6 +27,7 @@ const Transformer = ({
             backgroundColor: 'white',
             borderRadius: 10,
             padding: 10,
+            fontFamily: 'Montserrat',
           }}
           onChangeText={text => {
             setUsdTransform(text ? parseInt(text) : 0);
@@ -82,6 +83,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginLeft: 10,
     color: 'white',
+    fontFamily: 'Montserrat-Regular',
   },
   subtitle: {
     fontSize: 20,
@@ -89,5 +91,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginLeft: 10,
     color: 'white',
+    fontFamily: 'Montserrat-Regular',
   },
 });
