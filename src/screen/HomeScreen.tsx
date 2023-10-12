@@ -16,6 +16,26 @@ import {CurrencyData} from '../interfaces/Home';
 import {Header} from '../components/Header';
 import Transformer from '../components/Transformer';
 import {CarouselComponent} from '../components/Carousel';
+import {
+  AdEventType,
+  BannerAd,
+  BannerAdSize,
+  InterstitialAd,
+  TestIds,
+} from 'react-native-google-mobile-ads';
+
+const adUnitId = __DEV__
+  ? TestIds.BANNER
+  : 'ca-app-pub-xxxxxxxxxxxxx/yyyyyyyyyyyyyy';
+
+const adUnitId2 = __DEV__
+  ? TestIds.INTERSTITIAL
+  : 'ca-app-pub-xxxxxxxxxxxxx/yyyyyyyyyyyyyy';
+
+const interstitial = InterstitialAd.createForAdRequest(adUnitId2, {
+  requestNonPersonalizedAdsOnly: true,
+  keywords: ['fashion', 'clothing'],
+});
 
 export const HomeScreen = () => {
   const [data, setData] = React.useState<CurrencyData>({
@@ -50,9 +70,27 @@ export const HomeScreen = () => {
     fetchData();
   }, []);
 
+  // ads
+  const [loaded, setLoaded] = React.useState(false);
+
+  React.useEffect(() => {
+    const unsubscribe = interstitial.addAdEventListener(
+      AdEventType.LOADED,
+      () => {
+        setLoaded(true);
+      },
+    );
+    interstitial.load();
+    return unsubscribe;
+  }, []);
+
+  if (!loaded) {
+    return null;
+  }
+
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor="red" />
+      {/* <StatusBar backgroundColor="red" /> */}
       <LinearGradient
         colors={['#0072ff', '#00c6ff']}
         start={{x: 0, y: 0}}
@@ -82,6 +120,21 @@ export const HomeScreen = () => {
             alignItems: 'center',
           }}>
           <CarouselComponent data={allPrices.map(item => item)} />
+        </View>
+        <View
+          style={{
+            position: 'absolute',
+            bottom: 0,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <BannerAd
+            unitId={adUnitId}
+            size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
+            requestOptions={{
+              requestNonPersonalizedAdsOnly: true,
+            }}
+          />
         </View>
       </LinearGradient>
     </View>
