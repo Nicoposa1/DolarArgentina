@@ -57,10 +57,11 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   itemText: {
-    fontSize: 20,
+    fontSize: 15,
     fontWeight: 'bold',
     textAlign: 'center',
     fontFamily: 'Montserrat-Bold',
+    color: '#0072ff',
   },
   subTitle: {
     fontSize: 15,

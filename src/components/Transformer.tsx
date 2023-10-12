@@ -28,7 +28,10 @@ const Transformer = ({
             borderRadius: 10,
             padding: 10,
             fontFamily: 'Montserrat',
+          color: 'black',
           }}
+          // text input color is black 
+
           onChangeText={text => {
             setUsdTransform(text ? parseInt(text) : 0);
           }}

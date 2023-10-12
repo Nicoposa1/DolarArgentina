@@ -34,7 +34,7 @@ const adUnitId2 = __DEV__
 
 const interstitial = InterstitialAd.createForAdRequest(adUnitId2, {
   requestNonPersonalizedAdsOnly: true,
-  keywords: ['fashion', 'clothing'],
+  keywords: ['finance', 'clothing'],
 });
 
 export const HomeScreen = () => {

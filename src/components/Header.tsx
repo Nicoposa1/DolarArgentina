@@ -20,7 +20,7 @@ export const Header = ({data}: {data: CurrencyData}) => {
 
 const styles = StyleSheet.create({
   headerContainer: {
-    marginTop: 80,
+    marginTop: 40,
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
