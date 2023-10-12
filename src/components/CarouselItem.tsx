@@ -12,10 +12,26 @@ const CarouselItem = ({item}: {item: CurrencyData}) => (
       alignItems: 'center',
     }}>
     <View style={styles.item}>
-      <Text style={styles.itemText}>{item.nombre}</Text>
-      <Text style={[styles.itemText, {color: '#0072ff', marginTop: 10}]}>
-        {item?.compra}
+      <Text
+        style={[
+          styles.itemText,
+          {
+            marginBottom: item?.compra ? 0 : 10,
+          },
+        ]}>
+        {item.nombre}
       </Text>
+      {item?.compra && (
+        <>
+          <Text style={[styles.subTitle, {marginTop: 10}]}>
+            {item?.compra ? 'Compra' : ''}
+          </Text>
+          <Text style={[styles.itemText, {color: '#0072ff'}]}>
+            {item?.compra}
+          </Text>
+        </>
+      )}
+      <Text style={styles.subTitle}>Venta</Text>
       <Text style={[styles.itemText, {color: '#0072ff'}]}>{item?.venta}</Text>
     </View>
   </View>
@@ -34,7 +50,7 @@ const styles = StyleSheet.create({
   item: {
     backgroundColor: 'white',
     borderRadius: 10,
-    height: 120,
+    height: 150,
     width: 200,
     padding: 10,
     justifyContent: 'center',
@@ -45,6 +61,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     fontFamily: 'Montserrat-Bold',
+  },
+  subTitle: {
+    fontSize: 15,
+    color: '#0072ff',
+    fontFamily: 'Montserrat-Semibold',
+    textAlign: 'center',
   },
 });
 

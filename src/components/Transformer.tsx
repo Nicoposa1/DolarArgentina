@@ -1,4 +1,4 @@
-import {StyleSheet, Text, TextInput, View} from 'react-native';
+import {Keyboard, StyleSheet, Text, TextInput, View} from 'react-native';
 import React from 'react';
 import {CurrencyData} from '../interfaces/Home';
 
@@ -32,6 +32,7 @@ const Transformer = ({
           onChangeText={text => {
             setUsdTransform(text ? parseInt(text) : 0);
           }}
+          onBlur={Keyboard.dismiss}
           value={usdTransform ? usdTransform.toString() : ''}
           placeholder={isDolar ? 'USD$' : 'ARS$'}
           placeholderTextColor={'gray'}
