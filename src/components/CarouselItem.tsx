@@ -1,16 +1,21 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Touchable, TouchableOpacity, Keyboard} from 'react-native';
 import {CurrencyData} from '../interfaces/Home';
 
 const CarouselItem = ({item}: {item: CurrencyData}) => (
-  <View
+  <TouchableOpacity
     style={{
       width: 300,
       height: 200,
       justifyContent: 'center',
       alignItems: 'center',
-    }}>
+    }}
+    activeOpacity={1}
+    onPress={() => {
+      Keyboard.dismiss();
+    }}
+    >
     <View style={styles.item}>
       <Text
         style={[
@@ -34,7 +39,7 @@ const CarouselItem = ({item}: {item: CurrencyData}) => (
       <Text style={styles.subTitle}>Venta</Text>
       <Text style={[styles.itemText, {color: '#0072ff'}]}>{item?.venta}</Text>
     </View>
-  </View>
+  </TouchableOpacity>
 );
 CarouselItem.propTypes = {
   item: PropTypes.shape({

@@ -2,6 +2,7 @@
   "name": "DolarArgentina",
   "displayName": "DolarArgentina",
   "react-native-google-mobile-ads": {
-    "android_app_id": "ca-app-pub-6795299478150054~4409916705"
+    "android_app_id": "ca-app-pub-6795299478150054~4409916705",
+    "ios_app_id": "ca-app-pub-6795299478150054~4409916705"
   }
 }

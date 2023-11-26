@@ -7,8 +7,8 @@
 
 import React from 'react';
 import {SafeAreaView} from 'react-native';
-import {HomeScreen} from './src/screen/HomeScreen';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { HomeScreen } from './src/screen/HomeScreen';
 
 function App(): JSX.Element {
   return (
