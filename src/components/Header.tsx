@@ -1,8 +1,9 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {CurrencyData} from '../interfaces/Home';
+import { useSelector } from 'react-redux';
 
-export const Header = ({data}: {data: CurrencyData}) => {
+export const Header = () => {
+  const {dolarBlue} = useSelector((state: any) => state.coins);
   return (
     <View style={styles.headerContainer}>
       <Text
@@ -12,7 +13,7 @@ export const Header = ({data}: {data: CurrencyData}) => {
           fontWeight: '700',
           fontFamily: 'Montserrat-Bold',
         }}>
-        USD$1 = {data?.venta}
+        USD$1 = {dolarBlue?.venta}
       </Text>
     </View>
   );

@@ -6,12 +6,12 @@ import Carousel from 'react-native-reanimated-carousel';
 export const CarouselComponent = ({data}: {data: any}) => {
   const width = Dimensions.get('window').width;
   return (
-    <TouchableOpacity style={{flex: 1}}
-    activeOpacity={1}
-    onPress={() => {
-      Keyboard.dismiss();
-    }}
-    >
+    <TouchableOpacity
+      style={{flex: 1}}
+      activeOpacity={1}
+      onPress={() => {
+        Keyboard.dismiss();
+      }}>
       <Carousel
         loop
         width={300}

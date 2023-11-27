@@ -1,18 +1,17 @@
 import {Keyboard, StyleSheet, Text, TextInput, View} from 'react-native';
 import React from 'react';
-import {CurrencyData} from '../interfaces/Home';
+import {useSelector} from 'react-redux';
 
 const Transformer = ({
   usdTransform,
   setUsdTransform,
-  data,
   isDolar,
 }: {
   usdTransform: number;
   setUsdTransform: (value: number) => void;
-  data: CurrencyData;
   isDolar: boolean;
 }) => {
+  const {dolarBlue} = useSelector((state: any) => state.coins);
   return (
     <>
       <View style={styles.bodyContainer}>
@@ -20,20 +19,9 @@ const Transformer = ({
           {isDolar ? 'Transforma USD$ a ARS$' : 'Transforma ARS$ a USD$'}
         </Text>
         <TextInput
-          style={{
-            height: 40,
-            borderColor: 'gray',
-            borderWidth: 1,
-            backgroundColor: 'white',
-            borderRadius: 10,
-            padding: 10,
-            fontFamily: 'Montserrat',
-          color: 'black',
-          }}
-          // text input color is black 
-
+          style={styles.input}
           onChangeText={text => {
-            setUsdTransform(text ? parseInt(text) : 0);
+            setUsdTransform(text ? parseFloat(text) : 0);
           }}
           onBlur={Keyboard.dismiss}
           value={usdTransform ? usdTransform.toString() : ''}
@@ -51,12 +39,12 @@ const Transformer = ({
             {isDolar ? 'ARS$' : 'USD$'}
             {isDolar
               ? usdTransform
-                ? (usdTransform * data?.venta)
+                ? (usdTransform * dolarBlue?.venta)
                     .toFixed(2)
                     .replace(/\d(?=(\d{3})+\.)/g, '$&,')
                 : ''
               : usdTransform
-              ? (usdTransform / data?.venta)
+              ? (usdTransform / dolarBlue?.venta)
                   .toFixed(2)
                   .replace(/\d(?=(\d{3})+\.)/g, '$&,')
               : ''}
@@ -96,5 +84,15 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     color: 'white',
     fontFamily: 'Montserrat-Regular',
+  },
+  input: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    backgroundColor: 'white',
+    borderRadius: 10,
+    padding: 10,
+    fontFamily: 'Montserrat',
+    color: 'black',
   },
 });
