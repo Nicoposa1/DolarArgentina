@@ -17,9 +17,7 @@ import {setCoins, setDolarBlue} from '../store/reducers/coins';
 
 const adUnitId = __DEV__ ? TestIds.BANNER : `${process.env.ADS_TOKEN}`;
 
-const adUnitId2 = __DEV__
-  ? TestIds.INTERSTITIAL
-  : `${process.env.ADS_TOKEN}`;
+const adUnitId2 = __DEV__ ? TestIds.INTERSTITIAL : `${process.env.ADS_TOKEN}`;
 
 const interstitial = InterstitialAd.createForAdRequest(adUnitId2, {
   requestNonPersonalizedAdsOnly: true,
