@@ -67,7 +67,6 @@ export const HomeScreen = () => {
 
   if (!loaded) {
     return null;
-    
   }
 
   return (
